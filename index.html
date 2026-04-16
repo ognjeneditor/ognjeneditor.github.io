@@ -554,9 +554,9 @@
         <div class="about-name">Ognjen</div>
         <div class="about-role">Video Editor · Serbia</div>
         <div class="social-links">
-          <a href="mailto:ognjen.editor@gmail.com" class="social-link">
+          <a href="#" class="social-link" onclick="copyEmail(event)">
             <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            Email
+            <span id="email-label">Email</span>
           </a>
           <a href="https://x.com/OgnjenEdits" target="_blank" class="social-link">
             <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -588,7 +588,7 @@
     <h2>Ready to grow your <span>channel?</span></h2>
     <p>Send me your channel. I'll tell you exactly what's holding it back, for free.</p>
     <div class="cta-buttons">
-      <a href="mailto:ognjen.editor@gmail.com" class="btn-primary">ognjen.editor@gmail.com</a>
+      <a href="#" class="btn-primary" onclick="copyEmail(event)"><span id="cta-email-label">ognjen.editor@gmail.com</span></a>
       <a href="https://x.com/OgnjenEdits" target="_blank" class="btn-secondary">DM on Twitter</a>
     </div>
   </div>
@@ -603,5 +603,20 @@
     </span>
   </footer>
 
+  <script>
+    function copyEmail(e) {
+      e.preventDefault();
+      navigator.clipboard.writeText('ognjen.editor@gmail.com').then(function() {
+        document.getElementById('email-label').textContent = 'Copied!';
+        var cta = document.getElementById('cta-email-label');
+        if (cta) cta.textContent = 'Copied!';
+        setTimeout(function() {
+          document.getElementById('email-label').textContent = 'Email';
+          var cta2 = document.getElementById('cta-email-label');
+          if (cta2) cta2.textContent = 'ognjen.editor@gmail.com';
+        }, 2000);
+      });
+    }
+  </script>
 </body>
 </html>
